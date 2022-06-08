@@ -1,38 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToDo</title>
-  <link rel="stylesheet" href="reset.css">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script><!-- 開発バージョンのVue.jsを使用 -->
-</head>
-<body>
-  <div class="main" id="todos">
-    <div class="header">
-      <h1 class="site-title">ToDo</h1>
-      <h2><button v-on:click="importTodo()">import</button></h2>
-      <h2><button v-on:click="exportTodo()">export</button></h2>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script><!-- 開発バージョンのVue.jsを使用 -->
+  </head>
+  <body>
+    <div class="main" id="todos">
+      <div class="header">
+        <h1 class="site-title">ToDo</h1>
+        <h2><button v-on:click="importTodo()">import</button></h2>
+        <h2><button v-on:click="exportTodo()">export</button></h2>
+      </div>
+      <div class="body">
+        <ul class="todo-list">
+          <li class="todo-list-item" v-for="(todo, index) in todos">
+            <div class="todo-list-item-body"></div>
+            <em v-if="!todo.edit">{{ todo.text }}</em>
+            <input type="text" v-else v-model="todos[index].text">
+            <button v-on:click="changeMode(index)">編集</button>
+            <button v-on:click="destroyTodo(index)">削除</button>
+          </li>
+          <li class="new-todo-list-item">
+            <input type="text" v-model="new_todo">
+            <button v-on:click="createTodo()">登録</button>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="body">
-      <ul class="todo-list">
-        <li class="todo-list-item" v-for="(todo, index) in todos">
-          <div class="todo-list-item-body"></div>
-          <em v-if="!todo.edit">{{ todo.text }}</em>
-          <input type="text" v-else v-model="todos[index].text">
-          <button v-on:click="changeMode(index)">編集</button>
-          <button v-on:click="destroyTodo(index)">削除</button>
-        </li>
-
-        <li class="new-todo-list-item">
-          <input type="text" v-model="new_todo">
-          <button v-on:click="createTodo()">登録</button>
-        </li>
-      </ul>
-    </div>
-  </div>
-</body>
-<script type="text/javascript" src="script.js"></script>
+  </body>
+  <script type="text/javascript" src="script.js"></script>
 </html>
