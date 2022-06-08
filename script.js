@@ -17,6 +17,22 @@ var todo = new Vue({
     },
     changeMode: function (todo_index) {
       this.todos[todo_index].edit = !this.todos[todo_index].edit
+    },
+    export: function () {
+      localStorage.clear()
+      this.todos.forEach((todo, index) => {
+        localStorage.setItem(index, todo.text)
+      })
+    },
+    import: function () {
+      this.todos = []
+      for (let index = 0; index < localStorage.length; index++) {
+        let todo = {
+          text: localStorage.getItem(localStorage.key(index)),
+          edit: false
+        }
+        this.todos.push(todo)
+      }
     }
   }
 })
