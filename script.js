@@ -7,7 +7,7 @@ var todo = new Vue({
     ]
   },
   methods: {
-    destoryTodo: function (todo_index) {
+    destroyTodo: function (todo_index) {
       this.todos.splice(todo_index, 1)
     }
   }

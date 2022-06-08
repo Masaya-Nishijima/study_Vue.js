@@ -21,7 +21,7 @@
         <li class="todo-list-item" v-for="(todo, index) in todos">
           <em>{{ todo.text }}</em>
           <button>編集</button>
-          <button v-on:click="destoryTodo(index)">削除</button>
+          <button v-on:click="destroyTodo(index)">削除</button>
         </li>
 
         <li class="new-todo-list-item">
