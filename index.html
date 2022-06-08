@@ -17,12 +17,26 @@
       <h2><button>export</button></h2>
     </div>
     <div class="body">
-      <ul class="todo-list">
-        <li class="todo-list-item"><em>task 1</em><button>編集</button><button>削除</button></li>
-        <li class="todo-list-item"><em>task 2</em><button>編集</button><button>削除</button></li>
-        <li class="todo-list-item"><em>task 3</em><button>編集</button><button>削除</button></li>
-        <li class="todo-list-item"><em>task 4</em><button>編集</button><button>削除</button></li>
-        <li class="new-todo-list-item"><input type="text"><button>登録</button></li>
+<!--
+      <div id="todos">
+        <ul>
+          <li v-for="todo in todos">
+            {{ todo.text }}
+          </li>
+        </ul>
+      </div> -->
+
+      <ul class="todo-list" id="todos">
+        <li class="todo-list-item" v-for="todo in todos">
+          <em>{{ todo.text }}</em>
+          <button>編集</button>
+          <button>削除</button>
+        </li>
+
+        <li class="new-todo-list-item">
+          <input type="text">
+          <button>登録</button>
+        </li>
       </ul>
     </div>
   </div>
