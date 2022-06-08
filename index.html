@@ -18,16 +18,35 @@
       </div>
       <div class="body">
         <ul class="todo-list">
-          <li class="todo-list-item" v-for="(todo, index) in todos" :key="todo.id">
+          <li
+            class="todo-list-item"
+            v-for="(todo, index) in todos"
+            :key="todo.id"
+          >
             <div class="todo-list-item-body"></div>
-            <em v-if="!todo.edit">{{ todo.text }}</em>
-            <input type="text" v-else v-model="todos[index].text">
-            <button v-on:click="changeMode(index)">編集</button>
-            <button v-on:click="destroyTodo(index)">削除</button>
+            <em v-if="!todo.edit">
+              {{ todo.text }}
+            </em>
+            <input
+              type="text"
+              v-else
+              v-model="todos[index].text"
+            >
+            <button v-on:click="changeMode(index)">
+              編集
+            </button>
+            <button v-on:click="destroyTodo(index)">
+              削除
+            </button>
           </li>
           <li class="new-todo-list-item">
-            <input type="text" v-model="new_todo">
-            <button v-on:click="createTodo()">登録</button>
+            <input
+              type="text"
+              v-model="new_todo"
+            >
+            <button v-on:click="createTodo()">
+              登録
+            </button>
           </li>
         </ul>
       </div>
