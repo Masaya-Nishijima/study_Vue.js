@@ -13,6 +13,7 @@ var todo = new Vue({
     },
     createTodo: function () {
       this.todos.push({text: this.new_todo, edit: false})
+      this.new_todo = 'new todo'
     },
     changeMode: function (todo_index) {
       this.todos[todo_index].edit = !this.todos[todo_index].edit
