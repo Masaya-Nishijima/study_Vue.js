@@ -10,14 +10,14 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script><!-- 開発バージョンのVue.jsを使用 -->
 </head>
 <body>
-  <div class="main">
+  <div class="main" id="todos">
     <div class="header">
       <h1 class="site-title">ToDo</h1>
-      <h2 ><button>import</button></h2>
-      <h2><button>export</button></h2>
+      <h2><button v-on:click="importTodo()">import</button></h2>
+      <h2><button v-on:click="exportTodo()">export</button></h2>
     </div>
     <div class="body">
-      <ul class="todo-list" id="todos">
+      <ul class="todo-list">
         <li class="todo-list-item" v-for="(todo, index) in todos">
           <div class="todo-list-item-body"></div>
           <em v-if="!todo.edit">{{ todo.text }}</em>
