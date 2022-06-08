@@ -25,6 +25,10 @@
   margin: 10px 0;
 }
 
+.todo-list-item-body {
+  display: inline;
+}
+
 .todo-list em {
   font-style: italic;
 }

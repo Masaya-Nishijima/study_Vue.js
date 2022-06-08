@@ -19,8 +19,10 @@
     <div class="body">
       <ul class="todo-list" id="todos">
         <li class="todo-list-item" v-for="(todo, index) in todos">
-          <em>{{ todo.text }}</em>
-          <button>編集</button>
+          <div class="todo-list-item-body"></div>
+          <em v-if="!todo.edit">{{ todo.text }}</em>
+          <input type="text" v-else v-model="todos[index].text">
+          <button v-on:click="changeMode(index)">編集</button>
           <button v-on:click="destroyTodo(index)">削除</button>
         </li>
 
