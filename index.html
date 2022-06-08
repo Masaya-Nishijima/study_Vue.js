@@ -17,15 +17,6 @@
       <h2><button>export</button></h2>
     </div>
     <div class="body">
-<!--
-      <div id="todos">
-        <ul>
-          <li v-for="todo in todos">
-            {{ todo.text }}
-          </li>
-        </ul>
-      </div> -->
-
       <ul class="todo-list" id="todos">
         <li class="todo-list-item" v-for="(todo, index) in todos">
           <em>{{ todo.text }}</em>
