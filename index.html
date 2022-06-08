@@ -27,10 +27,10 @@
       </div> -->
 
       <ul class="todo-list" id="todos">
-        <li class="todo-list-item" v-for="todo in todos">
+        <li class="todo-list-item" v-for="(todo, index) in todos">
           <em>{{ todo.text }}</em>
           <button>編集</button>
-          <button>削除</button>
+          <button v-on:click="destoryTodo">削除</button>
         </li>
 
         <li class="new-todo-list-item">
