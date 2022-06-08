@@ -18,7 +18,7 @@
       </div>
       <div class="body">
         <ul class="todo-list">
-          <li class="todo-list-item" v-for="(todo, index) in todos">
+          <li class="todo-list-item" v-for="(todo, index) in todos" :key="todo.id">
             <div class="todo-list-item-body"></div>
             <em v-if="!todo.edit">{{ todo.text }}</em>
             <input type="text" v-else v-model="todos[index].text">
