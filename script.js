@@ -1,5 +1,5 @@
 var todo = new Vue({
-  el: '#todos',
+  el: '#todoItem',
   data: {
     todos:[
       { text: 'memo 1', edit: true },
