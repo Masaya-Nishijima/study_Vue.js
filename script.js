@@ -7,6 +7,14 @@ const todo = new Vue({
     ],
     new_todo: 'new todo'
   },
+  computed: {
+    exportTodos: function () {
+      localStorage.clear()
+      this.todos.forEach((todo, index) => {
+        localStorage.setItem(index, todo.text)
+      })
+    }
+  },
   methods: {
     destroyTodo: function (todoIndex) {
       this.todos.splice(todoIndex, 1)
@@ -17,12 +25,6 @@ const todo = new Vue({
     },
     changeMode: function (todoIndex) {
       this.todos[todoIndex].edit = !this.todos[todoIndex].edit
-    },
-    exportTodos: function () {
-      localStorage.clear()
-      this.todos.forEach((todo, index) => {
-        localStorage.setItem(index, todo.text)
-      })
     },
     importTodos: function () {
       this.todos = []
