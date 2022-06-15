@@ -1,4 +1,4 @@
-* {
+#todo-app, #todo-app button, #todo-app input{
   border-radius: 15px;
 }
 .main {
