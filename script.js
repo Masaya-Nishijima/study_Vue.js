@@ -5,14 +5,9 @@ const todo = new Vue({
     newTodo: 'new todo'
   },
   created() {
-    this.todos = []
-    for (let index = 0; index < localStorage.length; index++) {
-      const todo = {
-        text: localStorage.getItem(localStorage.key(index)),
-        edit: false
-      }
-      this.todos.push(todo)
-    }
+    localStorage.getItem('todo-app').split(',').forEach(todo => {
+      this.todos.push({text: todo, edit: false})
+    })
   },
   methods: {
     destroyTodo(todoIndex) {
@@ -29,10 +24,11 @@ const todo = new Vue({
       this.exportTodos()
     },
     exportTodos() {
-      localStorage.clear()
-      this.todos.forEach((todo, index) => {
-        localStorage.setItem(index, todo.text)
+      toSaveTodos = []
+      this.todos.forEach(todo => {
+        toSaveTodos.push(todo.text)
       })
+      localStorage.setItem("todo-app", toSaveTodos)
     }
   }
 })
