@@ -14,8 +14,8 @@
     <div class="main" id="todo-app">
       <div class="header">
         <h1 class="site-title">ToDo</h1>
-        <h2><button v-on:click="importTodos()">import</button></h2>
-        <h2><button v-on:click="exportTodos()">export</button></h2>
+        <h2><button @click="importTodos()">import</button></h2>
+        <h2><button @click="exportTodos()">export</button></h2>
       </div>
       <div class="body">
         <ul class="todo-list">
@@ -33,10 +33,10 @@
               v-else
               v-model="todos[index].text"
             >
-            <button v-on:click="changeMode(index)">
+            <button @click="changeMode(index)">
               編集
             </button>
-            <button v-on:click="destroyTodo(index)">
+            <button @click="destroyTodo(index)">
               削除
             </button>
           </li>
@@ -45,7 +45,7 @@
               type="text"
               v-model="new_todo"
             >
-            <button v-on:click="createTodo()">
+            <button @click="createTodo()">
               登録
             </button>
           </li>
