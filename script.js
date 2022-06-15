@@ -5,7 +5,7 @@ const todo = new Vue({
       { text: 'memo 1', edit: true },
       { text: 'memo 2', edit: false }
     ],
-    new_todo: 'new todo'
+    newTodo: 'new todo'
   },
   computed: {
     exportTodos: function () {
@@ -20,8 +20,8 @@ const todo = new Vue({
       this.todos.splice(todoIndex, 1)
     },
     createTodo: function () {
-      this.todos.push({ text: this.new_todo, edit: false })
-      this.new_todo = 'new todo'
+      this.todos.push({ text: this.newTodo, edit: false })
+      this.newTodo = 'new todo'
     },
     changeMode: function (todoIndex) {
       this.todos[todoIndex].edit = !this.todos[todoIndex].edit
