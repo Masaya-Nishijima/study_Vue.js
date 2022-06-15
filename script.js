@@ -1,32 +1,34 @@
 const todo = new Vue({
   el: '#todo-app',
   data: {
-    todos: [
-      { text: 'memo 1', edit: true },
-      { text: 'memo 2', edit: false }
-    ],
+    todos: [],
     newTodo: 'new todo'
   },
-  computed: {
-    exportTodos: function () {
-      localStorage.clear()
-      this.todos.forEach((todo, index) => {
-        localStorage.setItem(index, todo.text)
-      })
+  created() {
+    this.todos = []
+    for (let index = 0; index < localStorage.length; index++) {
+      const todo = {
+        text: localStorage.getItem(localStorage.key(index)),
+        edit: false
+      }
+      this.todos.push(todo)
     }
   },
   methods: {
-    destroyTodo: function (todoIndex) {
+    destroyTodo(todoIndex) {
       this.todos.splice(todoIndex, 1)
+      this.exportTodos()
     },
-    createTodo: function () {
+    createTodo() {
       this.todos.push({ text: this.newTodo, edit: false })
       this.newTodo = 'new todo'
+      this.exportTodos()
     },
-    changeMode: function (todoIndex) {
+    changeMode(todoIndex) {
       this.todos[todoIndex].edit = !this.todos[todoIndex].edit
+      this.exportTodos()
     },
-    importTodos: function () {
+    importTodos() {
       this.todos = []
       for (let index = 0; index < localStorage.length; index++) {
         const todo = {
@@ -35,6 +37,12 @@ const todo = new Vue({
         }
         this.todos.push(todo)
       }
+    },
+    exportTodos() {
+      localStorage.clear()
+      this.todos.forEach((todo, index) => {
+        localStorage.setItem(index, todo.text)
+      })
     }
   }
 })
