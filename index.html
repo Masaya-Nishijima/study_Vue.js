@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script><!-- 開発バージョンのVue.jsを使用 -->
+    <script type="text/javascript" src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="main" id="todo-app">
+      <div class="header">
+        <h1 class="site-title">ToDo</h1>
+      </div>
+      <div class="body">
+        <ul class="todo-list">
+          <li
+            class="todo-list-item"
+            v-for="(todo, index) in todos"
+            :key="todo.id"
+          >
+            <div class="todo-list-item-body"></div>
+            <em v-if="index != editingTodo.index">
+              {{ todo.text }}
+            </em>
+            <input
+              type="text"
+              v-else
+              v-model="todos[index].text"
+            >
+            <span v-if="editingTodo.index==null">
+              <button @click="changeMode(index)">
+                編集
+              </button>
+              <button @click="destroyTodo(index)">
+                削除
+              </button>
+            </span>
+            <span v-else>
+              <button
+                v-if="index == editingTodo.index"
+                @click="changeMode(index)"
+              >
+                保存
+              </button>
+            </span>
+          </li>
+          <li class="new-todo-list-item">
+            <input
+              type="text"
+              v-model="newTodo"
+            >
+            <button @click="createTodo()">
+              登録
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

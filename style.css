@@ -1,0 +1,44 @@
+#todo-app, #todo-app button, #todo-app input{
+  border-radius: 15px;
+}
+.main {
+  margin: 10px auto;
+}
+.header {
+  display: flex;
+}
+
+.header h1 {
+  font-size: 3em;
+  margin: 30px 15px;
+  flex: 1;
+}
+
+.header button {
+  font-size: 2em;
+  margin: 10px;
+}
+
+.todo-list li::before{
+  content: 'ø';
+  padding: 0 1em;
+}
+.todo-list li {
+  margin: 10px 0;
+}
+
+.todo-list-item-body {
+  display: inline;
+}
+
+.todo-list em {
+  font-style: italic;
+}
+
+.todo-list input{
+  padding: 0.25em 0.5em;
+}
+
+.todo-list button {
+  margin: 5px;
+}
