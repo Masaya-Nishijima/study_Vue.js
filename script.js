@@ -7,9 +7,7 @@ const todo = new Vue({
     newTodo: 'new todo'
   },
   created() {
-    localStorage.getItem('todo-app').split(',').forEach(todo => {
-      this.todos.push({text: todo})
-    })
+    this.todos = JSON.parse(localStorage.getItem('todo-app'))
   },
   methods: {
     destroyTodo(todoIndex) {
@@ -36,7 +34,7 @@ const todo = new Vue({
       this.todos.forEach(todo => {
         toSaveTodos.push(todo.text)
       })
-      localStorage.setItem("todo-app", toSaveTodos)
+      localStorage.setItem("todo-app", JSON.stringify(this.todos))
     }
   }
 })
