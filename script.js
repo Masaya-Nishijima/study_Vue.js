@@ -2,11 +2,13 @@ const todo = new Vue({
   el: '#todo-app',
   data: {
     todos: [],
+    editingTodo: {index: null},
+
     newTodo: 'new todo'
   },
   created() {
     localStorage.getItem('todo-app').split(',').forEach(todo => {
-      this.todos.push({text: todo, edit: false})
+      this.todos.push({text: todo})
     })
   },
   methods: {
@@ -15,12 +17,18 @@ const todo = new Vue({
       this.exportTodos()
     },
     createTodo() {
-      this.todos.push({ text: this.newTodo, edit: false })
+      this.todos.push({ text: this.newTodo})
       this.newTodo = 'new todo'
       this.exportTodos()
     },
     changeMode(todoIndex) {
-      this.todos[todoIndex].edit = !this.todos[todoIndex].edit
+      if (todoIndex != this.editingTodo.index) {
+        this.editingTodo.index = todoIndex
+      } else {
+        this.editingTodo.index = null
+      }
+
+      // this.todos[todoIndex].edit = !this.todos[todoIndex].edit
       this.exportTodos()
     },
     exportTodos() {
